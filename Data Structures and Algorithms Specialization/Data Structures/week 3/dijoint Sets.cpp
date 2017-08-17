@@ -7,7 +7,6 @@ struct Node
     int rnk;
     Node*parent;
 };
-
 map <long,Node*> myMap;
 map<long,Node*>::iterator it;
 
@@ -17,32 +16,18 @@ Node*findset(Node*node)
         node->parent= findset(node->parent);
     return node->parent;
 }
-
 void   makeset (long data)
 {
     Node *node= new Node();
     node->data= data;
     node-> parent = node;
-
-    ///new Node (*node->parent);
-    ///node.parent=&node; this is wrong it creates the same memory address for any object created
-    ///since any object of type node will have the same memory address of parent
-    ///it's like copy constructor
     node->rnk = 0;
     myMap.insert(pair <long,Node*>(data,node));
-
-    /** notice**/
-    //  cout<<node.data<<endl;
-    // cout<<node.parent->parent->data<<endl;
-    //cout<<node.parent<<endl;
-
-
 }
 long findset(long data)
 {
     it = myMap.find(data);
     Node*node = it->second;
-    //cout<< node->data<<endl;
     return findset(node)->data;
 
 }
