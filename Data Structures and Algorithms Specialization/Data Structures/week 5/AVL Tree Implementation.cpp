@@ -266,7 +266,7 @@ Node* AVLMergeWithRoot(Node* R1,Node* R2,Node* T)
     }
     if (abs(R1->height-R2->height)<=1)
     {
-        T = BSTMergeWithRoot(R1,R2,T);//T->key
+        T = BSTMergeWithRoot(R1,R2,T);
         T->AdjustHeight();
         return T;
     }
@@ -329,7 +329,7 @@ int main()
      AVLTree tree2 = AVLTree(&root2);
      tree2.Insert(40);
      tree2.Insert(120);
-     InOrderTraversal(tree2.root); //combinedRoot->key
+     InOrderTraversal(tree2.root); 
       cout<<endl;
 
      Node* combinedRoot= AVLMerge(tree1.root,tree2.root);
