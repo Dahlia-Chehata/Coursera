@@ -3,7 +3,6 @@
 #include <string.h>
 using namespace std;
 vector < vector <int > > adjList;
-int ret=0;
 bool hasCycle(int u,bool*recStack,bool*vis)
 {
     if (!vis[u])
