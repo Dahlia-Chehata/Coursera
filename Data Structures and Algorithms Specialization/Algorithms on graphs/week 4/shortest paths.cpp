@@ -35,8 +35,6 @@ void BellmanFord(int n,int m,int s,vector<long long >&dist)
             if (dist[E.u]!=MAX && dist[E.v]> dist[E.u]+E.weigh)
                 dist[E.v]= dist[E.u]+E.weigh;
         }
-//       for (int i=1;i<=n;i++)cout <<dist[i]<<" ";
-//       cout <<endl;
     }
     for (int i=0; i<m; i++)
     {
@@ -46,8 +44,6 @@ void BellmanFord(int n,int m,int s,vector<long long >&dist)
             dist[E.v]=MIN;
             Q.push(E.v);
        }
-//for (int i=1;i<=n;i++)cout <<dist[i]<<" ";
-//      cout <<endl;
     }
 }
 void BFS (vector<long long >&dist)
