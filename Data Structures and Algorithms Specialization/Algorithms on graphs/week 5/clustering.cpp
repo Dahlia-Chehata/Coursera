@@ -114,12 +114,6 @@ int main()
         }
     }
     cin>>k;
-
-
-//        sort(edges.begin(),edges.end(),compare);
-//        for (vector <edge>::iterator it=edges.begin(); it!=edges.end(); ++it)
-//          cout <<"point"<<(*it).idxA<<" point"<<(*it).idxB<<" distance "<<(*it).d<<endl;
-
     cout <<fixed;
     cout <<setprecision(9)<<kruskal(n,k);
     return 0;
