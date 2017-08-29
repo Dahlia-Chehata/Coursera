@@ -1,4 +1,3 @@
-package coursera;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,18 +25,7 @@ public class SuffixTree {
 			SuffixNode node=new SuffixNode();
 			node.start=start;
 			node.end=end;
-			return node;
-			
-		}
-		public String toString() {
-			StringBuffer buffer =new StringBuffer();
-			int i=0;
-			for (SuffixNode child:children) {
-				if (child!=null)
-					buffer.append((char)i+" ");
-				i++;
-			}
-			return "SuffixNode [ start="+start+"]"+" "+buffer.toString();
+			return node;	
 		}
 	}
  
@@ -52,13 +40,7 @@ public class SuffixTree {
 		 activeLength=0; 
 		 activeEdge=-1; 
 	 }
-	 public String toString() {
-		 return "Active [ Active Node = "+ activeNode+" , Active Edge = "
-	     + activeEdge + " , Active Length = "+ activeLength+"]";
-	 }
  }
- 
-	 
 	 private SuffixNode root;
 	 private Active active;
 	 private End end;
@@ -231,51 +213,8 @@ public class SuffixTree {
 	            dfsTraversal(child, result);
 	        }
 	    }
-	 public boolean validate(){
-	        for(int i=0; i < input.length; i++){
-	            if(!validate(root,input, i, i)){
-	                System.out.println(" validation failed");
-	                return false;
-	            }
-	        }
-	        return true;
-	    }
-	 private boolean validate(SuffixNode root, char[] input, int index, int curr){
-	        if(root == null){
-	            System.out.println("Failed at " + curr + " for index " + index);
-	            return false;
-	        }
-	        
-	        if(root.index != -1){
-	            if(root.index != index){
-	                System.out.println("Index not same. Failed at " + curr + " for index " + index);
-	                return false;        
-	            }else return true;
-	        }
-	        if(curr >= input.length){
-	            System.out.println("Index not same. Failed at " + curr + " for index " + index);
-	            return false;        
-	        }
-	        
-	        SuffixNode node = root.children[input[curr]];
-	        if(node == null){
-	            System.out.println("Failed at " + curr + " for index " + index);
-	            return false;
-	        }
-	        int j = 0;
-	        for(int i=node.start ; i <= node.end.end; i++){
-	            if(input[curr+j] != input[i] ){
-	                System.out.println("Mismatch found " + input[curr+j] + " " + input[i]);
-	                return false;
-	            }
-	            j++;
-	        }
-	        curr += node.end.end - node.start + 1;
-	        return validate(node, input, index, curr);
-	    }
 	
  public static void main(String args[]){
-	 
 	 Scanner sc = new Scanner(System.in);
 	 String input =sc.next();
      SuffixTree tree = new SuffixTree(input.toCharArray());
@@ -286,7 +225,5 @@ public class SuffixTree {
 	}
      tree.dfsTraversal();
      sc.close();
-     System.out.println(tree.validate());
  }
- 
- }
+}
