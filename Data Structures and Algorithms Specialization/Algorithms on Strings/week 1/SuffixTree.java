@@ -8,7 +8,7 @@ public class SuffixTree {
 	class End{
 		int end;
 		public End(int end) {
-			this.end=end;
+		    this.end=end;
 		}	
 	}
 	
