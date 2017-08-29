@@ -33,7 +33,7 @@ public class SuffixTree {
 	 
 	 SuffixNode activeNode; //representing active point
 	 int activeLength; // distance to be traveled on active edge
-	 int activeEdge; // edge chosen from active point represented by index of character
+	 int activeEdge; // edge chosen from active point represented by character's index
 	 
 	 Active(SuffixNode activeNode){
 		 this.activeNode=activeNode;
@@ -55,7 +55,7 @@ public class SuffixTree {
 		 this.input[input.length]=EOI;
 	 }
 	 public void build () throws Exception {
-		 root=SuffixNode.createNode(1, new End(0)); //end for root is zero because no character has been processed yet
+		 root=SuffixNode.createNode(1, new End(0));
 		 root.index=-1;
 		 active = new Active (root);
 		 this.end=new End(-1);
