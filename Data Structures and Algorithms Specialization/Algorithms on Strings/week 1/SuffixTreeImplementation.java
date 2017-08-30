@@ -108,31 +108,31 @@ public class SuffixTree {
 						 active.activeNode.children[input[newInternalNode.start]]=newInternalNode;
 						 
 						 if (lastCreatedInternalNode != null) 
-	                            lastCreatedInternalNode.SuffixLink = newInternalNode;
-	                     lastCreatedInternalNode = newInternalNode;
-	                     newInternalNode.SuffixLink = root;
+	                                            lastCreatedInternalNode.SuffixLink = newInternalNode;
+	                                         lastCreatedInternalNode = newInternalNode;
+	                                         newInternalNode.SuffixLink = root;
 	                     
-	                     if (active.activeNode!=root)
-	                    	 active.activeNode=active.activeNode.SuffixLink;
-	                     else {
-	                    	 active.activeEdge = active.activeEdge  + 1;
-	                         active.activeLength--;
-	                     }
-	                     remainingCount--;
+	                                         if (active.activeNode!=root)
+	                                        	 active.activeNode=active.activeNode.SuffixLink;
+	                                        else {
+	                                        	 active.activeEdge = active.activeEdge  + 1;
+	                                                 active.activeLength--;
+	                                        }
+	                                        remainingCount--;
 					 }
 				 }catch(EndOfPathException e) { //reached end of path so we already have internal node
 					 SuffixNode node= selectActiveNode();
 					 node.children[input[i]]=SuffixNode.createNode(i, end);
 					 if (lastCreatedInternalNode != null) 
-                         lastCreatedInternalNode.SuffixLink = node;
+                                            lastCreatedInternalNode.SuffixLink = node;
 					 lastCreatedInternalNode=node;
 					 if(active.activeNode != root)
-	                        active.activeNode = active.activeNode.SuffixLink;
+	                                     active.activeNode = active.activeNode.SuffixLink;
 					 else{
-	                        active.activeEdge = active.activeEdge + 1;
-	                        active.activeLength--;
-	                    }
-	                    remainingCount--;
+	                                     active.activeEdge = active.activeEdge + 1;
+	                                     active.activeLength--;
+	                                 }
+	                                remainingCount--;
 				 }
 			 }
 		 }
@@ -213,7 +213,28 @@ public class SuffixTree {
 	            dfsTraversal(child, result);
 	        }
 	    }
-	
+	public void print(SuffixNode node) {
+		if (node == null || node == root)
+			return;
+		String str = "";
+		for (int i = node.start; i <= node.end.end; i++)
+			str += (input[i]);
+		System.out.println(str);
+	}
+
+	public void printEdges() {
+		Queue<SuffixNode> Q = new LinkedList<>();
+		Q.add(root);
+		while (!Q.isEmpty()) {
+			SuffixNode node = Q.poll();
+			if (node == null) continue;
+			print (node);
+			for (SuffixNode child : node.children) {
+				Q.add(child);
+			}
+		}
+	}
+
  public static void main(String args[]){
 	 Scanner sc = new Scanner(System.in);
 	 String input =sc.next();
@@ -224,6 +245,7 @@ public class SuffixTree {
 		e.printStackTrace();
 	}
      tree.dfsTraversal();
+     tree.printEdges();
      sc.close();
  }
 }
