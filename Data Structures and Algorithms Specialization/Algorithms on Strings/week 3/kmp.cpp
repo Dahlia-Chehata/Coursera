@@ -12,8 +12,6 @@ vector <int>computePrefixFunction(string pattern)
             border = s[border-1];
         if (pattern[i]==pattern[border])
             border++;
-//        else
-//            border=0;
         s[i]=border;
     }
     return s;
